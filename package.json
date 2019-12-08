@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/schallot/log4js-sqlite3#readme",
   "dependencies": {
-    "debug": "^4.1.1",
     "log4js": "^6.1.0",
     "sqlite3": "^4.1.1"
   },

@@ -14,10 +14,10 @@ describe('log4js', function() {
             filename: './test.sqlite',
             table: "log",
             useNullAsDefault: true,
-            additionalFields: {
-              customColumn1: 'custom value 1',
-              customColumn2: 'custom value 2'
-            }
+            additionalFields: [
+              {name: 'customColumn1', value: 'custom value 1', type: 'TEXT' },
+              {name: 'customColumn2', value: '222', type: 'INTEGER' },
+            ]
           },
         },
         categories: {
