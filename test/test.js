@@ -7,6 +7,7 @@ const fs = require('fs');
 
 describe('log4js', function() {
   describe('log', function() {
+    this.timeout(10000);
     it('should log to sqlite db', async function(done) {
       const dbFile = './test/test.sqlite';
       if(fs.existsSync(dbFile)){
@@ -41,15 +42,15 @@ describe('log4js', function() {
 
       await new Promise((resolve, reject) => {
         console.log('Waiting three seconds.')
-        setTimeout(resolve, 3000);
+        setTimeout(resolve, 1000);
         console.log('finished waiting three seconds');
       });
 
-      console.log('Writing first log entry....')
+      console.log('Writing first log entry....');
       defaultLog.info('first log entry');
-      console.log('Writing second log entry....')
+      console.log('Writing second log entry....');
       defaultLog.trace('this log entry is too low of a level to reach the database');
-      console.log('Writing third log entry....')
+      console.log('Writing third log entry....');
       anotherLog.error('this error message should show up with category set to ANOTHER_CATEGORY');
 
       const db = new sqlite.Database(dbFile);
@@ -80,7 +81,7 @@ describe('log4js', function() {
         });
       });
 
-      assert.equal(resultRows.length, 3, 'Unexpected number of log rows were written.');
+      assert.equal(resultRows.length, 3, 'Expected two log rows to have been written: an info and an error, with the trace entry having been filtered out.');
 
       db.close();
       done();
