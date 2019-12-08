@@ -10,14 +10,10 @@ describe('log4js', function() {
       log4js.configure({
         appenders: {
           database: {
-            type: "log4js-sqlite",
+            type: "lib/log4js-sqlite3",
+            filename: './test.sqlite',
             table: "log",
-            knex: {
-              connection: {
-                filename: './test/test.sqlite'
-              },
-              useNullAsDefault: true
-            },
+            useNullAsDefault: true,
             additionalFields: {
               customColumn1: 'custom value 1',
               customColumn2: 'custom value 2'
