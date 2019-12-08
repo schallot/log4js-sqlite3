@@ -39,12 +39,17 @@ describe('log4js', function() {
       const defaultLog = log4js.getLogger();
       const anotherLog = log4js.getLogger('ANOTHER_CATEGORY');
 
-      await new Promise(((resolve, reject) => {
+      await new Promise((resolve, reject) => {
+        console.log('Waiting three seconds.')
         setTimeout(resolve, 3000);
-      }));
+        console.log('finished waiting three seconds');
+      });
 
+      console.log('Writing first log entry....')
       defaultLog.info('first log entry');
+      console.log('Writing second log entry....')
       defaultLog.trace('this log entry is too low of a level to reach the database');
+      console.log('Writing third log entry....')
       anotherLog.error('this error message should show up with category set to ANOTHER_CATEGORY');
 
       const db = new sqlite.Database(dbFile);
@@ -52,14 +57,17 @@ describe('log4js', function() {
         try{
           log4js.shutdown((err) => {
             if(err){
+              console.log('failed to shut down logs');
               reject(err);
             }
             else{
+              console.log('Finished shutting down logs.');
               resolve();
             }
           })
         }
         catch (e) {
+          console.log('failed to shut down sqlite logs.', e);
           reject(e);
         }
       });
