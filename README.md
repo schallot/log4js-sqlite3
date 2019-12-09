@@ -1,5 +1,5 @@
 # log4js-sqlite3
-[![NPM](https://nodei.co/npm/log4js-sqlite3.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/log4js/)
+[![NPM](https://nodei.co/npm/log4js-sqlite3.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/log4js-sqlite3/)
 
 A node.js [log4js](https://www.npmjs.com/package/log4js) appender for writing to [sqlite3](https://www.npmjs.com/package/sqlite3) databases.
 
