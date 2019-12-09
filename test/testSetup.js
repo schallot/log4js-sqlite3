@@ -67,7 +67,6 @@ const testSetup = {
         return resultRows;
     },
     setUp: async function(config){
-        const self = this;
         if(fs.existsSync(this.dbFile)){
             fs.unlinkSync(this.dbFile);
         }
