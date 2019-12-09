@@ -1,6 +1,6 @@
 {
   "name": "log4js-sqlite3",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A sqlite appender for log4js",
   "main": "./lib/log4js-sqlite3.js",
   "scripts": {
