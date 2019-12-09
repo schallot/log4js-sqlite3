@@ -1,0 +1,32 @@
+{
+  "name": "log4js-sqlite3",
+  "version": "0.0.1",
+  "description": "A sqlite appender for log4js",
+  "main": "./lib/log4js-sqlite3.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schallot/log4js-sqlite3.git"
+  },
+  "keywords": [
+    "log4js",
+    "sqlite",
+    "sqlite3"
+  ],
+  "author": "Pete Schallot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schallot/log4js-sqlite3/issues"
+  },
+  "homepage": "https://github.com/schallot/log4js-sqlite3#readme",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "log4js": "^6.1.0",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  }
+}
