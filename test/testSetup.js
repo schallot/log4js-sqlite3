@@ -15,9 +15,11 @@ const testSetup = {
           appenders: {
               database: {
                   type: "lib/log4js-sqlite3",
-                  filename: this.dbFile,
+                  file: this.dbFile,
                   table: this.logTable,
                   useNullAsDefault: true,
+                  // If this value is set, we'll delete old records as we go, keeping the record count below this level.
+                  maxRecordCount: 10000,
                   additionalFields: [
                       {name: 'customColumn1', value: 'custom value 1', type: 'TEXT' },
                       {name: 'customColumn2', value: '222', type: 'INTEGER' },
@@ -65,7 +67,6 @@ const testSetup = {
         return resultRows;
     },
     setUp: async function(config){
-        const self = this;
         if(fs.existsSync(this.dbFile)){
             fs.unlinkSync(this.dbFile);
         }

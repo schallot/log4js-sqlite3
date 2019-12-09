@@ -65,5 +65,26 @@ describe('log4js-sqlite3', function() {
       func();
     });
 
+    it('should keep record count below maxRecordCount', function (done) {
+      const func = async function() {
+        const config = testSetup.getDefaultConfig();
+        const maxRecordCount = 25;
+        config.appenders.database.maxRecordCount = maxRecordCount;
+        await testSetup.setUp(config);
+
+        const defaultLog = log4js.getLogger();
+        const recordCount = 100;
+
+        for(let i=0; i< recordCount; i++){
+          defaultLog.info(testSetup.randomishString());
+        }
+        await testSetup.wait(5000);
+        const resultRows = await testSetup.getLogs();
+        assert.equal(resultRows.length, maxRecordCount, `Found ${resultRows.length} records. Expected ${maxRecordCount}`);
+        done();
+      }
+      func();
+    });
+
   });
 });

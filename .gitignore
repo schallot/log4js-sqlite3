@@ -2,3 +2,5 @@
 node_modules/
 
 test/test.sqlite
+
+test/test.sqlite-journal
